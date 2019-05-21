@@ -86,6 +86,10 @@ public class Runner {
 		options.addOption(Option.builder("h").longOpt("help")
 		        .desc("Help")
 		        .build());
+		
+		options.addOption(Option.builder("f").longOpt("fullpath")
+				.desc("C:\\Git\\CLIExample\\.classpath")
+				.build());
 
 		return options;
 	}
