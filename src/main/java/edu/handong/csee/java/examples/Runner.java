@@ -11,9 +11,9 @@ import java.io.File;
 public class Runner {
 	
 	String path;
-	boolean verbose;
-	boolean help;
-	boolean fullpath;
+	boolean verbose=false;
+	boolean help=false;
+	boolean fullpath=false;
 	
 	public static void main(String[] args) {
 
@@ -31,6 +31,8 @@ public class Runner {
 				return;
 			}
 			
+			if(fullpath)
+			{
 				File dir=new File(path);
 				
 				for(File file:dir.listFiles())
@@ -38,6 +40,7 @@ public class Runner {
 					System.out.println(file.getName());
 					System.out.println(file.getAbsolutePath());
 				}
+			}
 			// path is required (necessary) data so no need to have a branch.
 			System.out.println("You provided \"" + path + "\" as the value of the option p");
 			
