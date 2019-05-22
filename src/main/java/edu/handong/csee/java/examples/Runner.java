@@ -6,13 +6,15 @@ import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
+import java.io.File;
 
 public class Runner {
 	
 	String path;
 	boolean verbose;
 	boolean help;
-
+	boolean fullpath;
+	
 	public static void main(String[] args) {
 
 		Runner myRunner = new Runner();
@@ -29,6 +31,13 @@ public class Runner {
 				return;
 			}
 			
+				File dir=new File(path);
+				
+				for(File file:dir.listFiles())
+				{
+					System.out.println(file.getName());
+					System.out.println(file.getAbsolutePath());
+				}
 			// path is required (necessary) data so no need to have a branch.
 			System.out.println("You provided \"" + path + "\" as the value of the option p");
 			
@@ -53,6 +62,7 @@ public class Runner {
 			path = cmd.getOptionValue("p");
 			verbose = cmd.hasOption("v");
 			help = cmd.hasOption("h");
+			fullpath=cmd.hasOption("f");
 
 		} catch (Exception e) {
 			printHelp(options);
@@ -72,7 +82,7 @@ public class Runner {
 				.hasArg()
 				.argName("Path name to display")
 				.required()
-				.build());
+				.build());	
 
 		// add options by using OptionBuilder
 		options.addOption(Option.builder("v").longOpt("verbose")
@@ -88,7 +98,7 @@ public class Runner {
 		        .build());
 		
 		options.addOption(Option.builder("f").longOpt("fullpath")
-				.desc("C:\\Git\\CLIExample\\.classpath")
+				.desc("full path print")
 				.build());
 
 		return options;
