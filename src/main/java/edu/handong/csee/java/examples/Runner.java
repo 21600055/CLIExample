@@ -28,7 +28,7 @@ public class Runner {
 		if(parseOptions(options, args)){
 			if (help){
 				printHelp(options);
-
+				return;
 			}
 			
 			if(fullpath)
@@ -90,7 +90,7 @@ public class Runner {
 		// add options by using OptionBuilder
 		options.addOption(Option.builder("v").longOpt("verbose")
 				.desc("Display detailed messages!")
-				//.hasArg()     // this option is intended not to have an option value but just an option
+				.hasArg()     // this option is intended not to have an option value but just an option
 				.argName("verbose option")
 				//.required() // this is an optional option. So disabled required().
 				.build());
@@ -102,8 +102,9 @@ public class Runner {
 		
 		options.addOption(Option.builder("f").longOpt("fullpath")
 				.desc("full path print")
+				.hasArg()
 				.build());
-
+		
 		return options;
 	}
 	
