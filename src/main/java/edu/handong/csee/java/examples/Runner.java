@@ -28,7 +28,7 @@ public class Runner {
 		if(parseOptions(options, args)){
 			if (help){
 				printHelp(options);
-				return;
+
 			}
 			
 			if(fullpath)
