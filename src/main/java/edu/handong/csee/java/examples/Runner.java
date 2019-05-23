@@ -70,6 +70,7 @@ public class Runner {
 		} catch (Exception e) {
 			printHelp(options);
 			return false;
+			
 		}
 
 		return true;
